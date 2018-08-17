@@ -1,5 +1,7 @@
 # maptalks.autogradual
 
+A tool to update geometries symbol with gradual change color.
+
 ## Examples
 
 ### [DEMO](https://cxiaof.github.io/maptalks.autogradual/demo/index.html)
@@ -18,6 +20,9 @@ As a plugin, `maptalks.autogradual` must be loaded after `maptalks.js` in browse
 <script type="text/javascript" src="https://unpkg.com/maptalks/dist/maptalks.min.js"></script>
 <script type="text/javascript" src="https://unpkg.com/maptalks.autogradual/dist/maptalks.autogradual.min.js"></script>
 <script>
+    const autogradual = new maptalks.AutoGradual()
+    autogradual.change(layer)
+    // autogradual.change(geos)
 </script>
 ```
 
@@ -28,9 +33,11 @@ new maptalks.AutoGradual()
 ```
 
 -   options
-    -   none
+    -   colors **Array** gradual color array
+    -   direction **String** 'x' / 'y' / null
+    -   includePolygonBorder **Boolean** false is default
 
-`change(geometry)`
+`change(attr)` // attr can be a VectorLayer or geos-array
 
 ## Contributing
 
@@ -88,3 +95,4 @@ $ npm run lint
 -   [maptalks.polygonbool](https://github.com/cXiaof/maptalks.polygonbool/issues)
 -   [maptalks.autogradual](https://github.com/cXiaof/maptalks.autogradual/issues)
 -   [maptalks.control.compass](https://github.com/cXiaof/maptalks.control.compass/issues)
+-   [maptalks.autogradual](https://github.com/cXiaof/maptalks.autogradual/issues)

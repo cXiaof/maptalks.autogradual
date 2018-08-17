@@ -1,7 +1,7 @@
 {
   "name": "maptalks.autogradual",
   "version": "0.1.0-alpha.1",
-  "description": "",
+  "description": "A tool to update geometries symbol with gradual change color.",
   "license": "MIT",
   "author": "cXiaof",
   "repository": {
