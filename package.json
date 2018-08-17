@@ -30,5 +30,8 @@
     "maptalks": "^0.40.5",
     "maptalks-build-helpers": "^0.5.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "hex-rgb": "^3.0.0",
+    "lodash": "^4.17.10"
+  }
 }

@@ -41,6 +41,10 @@ const toolbar = new maptalks.control.Toolbar({
         {
             item: 'Clear',
             click: () => layer.clear()
+        },
+        {
+            item: 'Gradual Change',
+            click: () => ag.change(layer)
         }
     ]
 }).addTo(map)
