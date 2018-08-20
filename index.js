@@ -15,7 +15,7 @@ export class AutoGradual extends maptalks.Class {
 
     change(target) {
         let geometries = []
-        if (target instanceof maptalks.VectorLayer) geometries = layer.getGeometries()
+        if (target instanceof maptalks.VectorLayer) geometries = target.getGeometries()
         else if (target instanceof Array) geometries = target
         this.geometries = this._sortGeosByExtent(geometries)
         this._length = this.geometries.length

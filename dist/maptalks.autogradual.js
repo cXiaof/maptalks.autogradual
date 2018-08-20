@@ -3480,7 +3480,7 @@ var AutoGradual = function (_maptalks$Class) {
 
     AutoGradual.prototype.change = function change(target) {
         var geometries = [];
-        if (target instanceof maptalks.VectorLayer) geometries = layer.getGeometries();else if (target instanceof Array) geometries = target;
+        if (target instanceof maptalks.VectorLayer) geometries = target.getGeometries();else if (target instanceof Array) geometries = target;
         this.geometries = this._sortGeosByExtent(geometries);
         this._length = this.geometries.length;
         if (this._length > 0) this._doRadualChange();
