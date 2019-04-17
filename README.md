@@ -11,7 +11,7 @@ A tool to update geometries symbol with gradual change color.
 -   Install with npm: `npm install maptalks.autogradual`.
 -   Install with yarn: `yarn add maptalks.autogradual`.
 -   Download from [dist directory](https://github.com/cXiaof/maptalks.autogradual/tree/master/dist).
--   Use unpkg CDN: `https://unpkg.com/maptalks.autogradual/dist/maptalks.autogradual.min.js`
+-   Use unpkg CDN: `https://cdn.jsdelivr.net/npm/maptalks.autogradual/dist/maptalks.autogradual.min.js`
 
 ## Usage
 
@@ -19,7 +19,7 @@ As a plugin, `maptalks.autogradual` must be loaded after `maptalks.js` in browse
 
 ```html
 <!-- ... -->
-<script src="https://unpkg.com/maptalks.autogradual/dist/maptalks.autogradual.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/maptalks.autogradual/dist/maptalks.autogradual.min.js"></script>
 <!-- ... -->
 ```
 
