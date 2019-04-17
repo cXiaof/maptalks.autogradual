@@ -9,6 +9,7 @@ A tool to update geometries symbol with gradual change color.
 ## Install
 
 -   Install with npm: `npm install maptalks.autogradual`.
+-   Install with yarn: `yarn add maptalks.autogradual`.
 -   Download from [dist directory](https://github.com/cXiaof/maptalks.autogradual/tree/master/dist).
 -   Use unpkg CDN: `https://unpkg.com/maptalks.autogradual/dist/maptalks.autogradual.min.js`
 
@@ -17,19 +18,21 @@ A tool to update geometries symbol with gradual change color.
 As a plugin, `maptalks.autogradual` must be loaded after `maptalks.js` in browsers. You can also use `'import { AutoGradual } from "maptalks.autogradual"` when developing with webpack.
 
 ```html
-<script type="text/javascript" src="https://unpkg.com/maptalks/dist/maptalks.min.js"></script>
-<script type="text/javascript" src="https://unpkg.com/maptalks.autogradual/dist/maptalks.autogradual.min.js"></script>
-<script>
-    const autogradual = new maptalks.AutoGradual()
-    autogradual.change(layer)
-    // autogradual.change(geos)
-</script>
+<!-- ... -->
+<script src="https://unpkg.com/maptalks.autogradual/dist/maptalks.autogradual.min.js"></script>
+<!-- ... -->
+```
+
+```javascript
+const autogradual = new maptalks.AutoGradual()
+autogradual.change(layer)
+// autogradual.change(geos)
 ```
 
 ## API Reference
 
 ```javascript
-new maptalks.AutoGradual()
+new maptalks.AutoGradual(options)
 ```
 
 -   options
@@ -37,7 +40,7 @@ new maptalks.AutoGradual()
     -   direction **String** 'x' / 'y' / null
     -   includePolygonBorder **Boolean** false is default
 
-`change(attr)` // attr can be a VectorLayer or geos-array
+`change(attr)` // attr can be a VectorLayer or geos array
 
 ## Contributing
 
@@ -61,18 +64,6 @@ $ npm install
 
 ```shell
 $ gulp watch
-```
-
--   Tests
-
-```shell
-$ npm test
-```
-
--   Watch source changes and run tests repeatedly
-
-```shell
-$ gulp tdd
 ```
 
 -   Package and generate minified bundles to dist directory
