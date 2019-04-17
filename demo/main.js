@@ -8,6 +8,9 @@ const map = new maptalks.Map('map', {
         placeholder: true
     })
 })
+new maptalks.CompassControl({
+    position: 'top-right'
+}).addTo(map)
 
 const ag = new maptalks.AutoGradual()
 const layer = new maptalks.VectorLayer('sketchPad').addTo(map)
@@ -30,6 +33,7 @@ modes.map((item) =>
 )
 
 const toolbar = new maptalks.control.Toolbar({
+    position: 'top-left',
     items: [
         {
             item: 'Draw',
