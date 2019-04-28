@@ -1,4 +1,4 @@
-//new Map
+// new Map
 const map = new maptalks.Map('map', {
     center: [121.387, 31.129],
     zoom: 14,
@@ -44,7 +44,7 @@ drawTool.on('drawend', (param) => {
     geometry.addTo(layer)
 })
 
-//new Toolbar
+// new Toolbar
 const modes = ['Point', 'LineString', 'Polygon', 'Rectangle', 'Circle', 'Ellipse']
 let children = []
 modes.map((item) => children.push({ item, click: () => drawTool.setMode(item).enable() }))
@@ -59,7 +59,7 @@ const toolbar = new maptalks.control.Toolbar({
     ]
 }).addTo(map)
 
-//new tip Panel
+// new tip Panel
 const textPanel = new maptalks.control.Panel({
     position: 'bottom-left',
     draggable: true,
