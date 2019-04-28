@@ -1,6 +1,6 @@
 {
   "name": "maptalks.autogradual",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A tool to update geometries symbol with gradual color.",
   "license": "MIT",
   "author": "cXiaof",
@@ -26,13 +26,13 @@
     "w": "gulp watch"
   },
   "dependencies": {
-    "hex-rgb": "^3.0.0",
+    "hex-rgb": "^4.1.0",
     "lodash.sortby": "^4.7.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
     "babel-preset-env": "^1.7.0",
-    "gulp": "^4.0.0",
+    "gulp": "^4.0.1",
     "maptalks": "^0.44.0",
     "maptalks-build-helpers": "^0.5.0"
   }

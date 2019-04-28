@@ -26,7 +26,8 @@ As a plugin, `maptalks.autogradual` must be loaded after `maptalks.js` in browse
 ```javascript
 const autogradual = new maptalks.AutoGradual()
 autogradual.change(layer)
-// autogradual.change(geos)
+// autogradual.change(geometryCollection)
+// autogradual.change(geometries)
 ```
 
 ## API Reference
@@ -40,7 +41,7 @@ new maptalks.AutoGradual(options)
     -   direction **String** 'x' / 'y' / null
     -   includePolygonBorder **Boolean** false is default
 
-`change(attr)` // attr can be a VectorLayer or geos array
+`change(attr)` // attr can be a VectorLayer, GeometryCollection or geometries array
 
 ## Contributing
 

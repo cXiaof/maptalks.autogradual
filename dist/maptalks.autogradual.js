@@ -1,5 +1,5 @@
 /*!
- * maptalks.autogradual v0.1.0
+ * maptalks.autogradual v0.1.1
  * LICENSE : MIT
  * (c) 2016-2019 maptalks.org
  */
@@ -8,45 +8,6 @@
 	typeof define === 'function' && define.amd ? define(['exports'], factory) :
 	(factory((global.maptalks = global.maptalks || {})));
 }(this, (function (exports) { 'use strict';
-
-var hexChars = 'a-f\\d';
-var match3or4Hex = '#?[' + hexChars + ']{3}[' + hexChars + ']?';
-var match6or8Hex = '#?[' + hexChars + ']{6}([' + hexChars + ']{2})?';
-
-var nonHexChars = new RegExp('[^#' + hexChars + ']', 'gi');
-var validHexSize = new RegExp('^' + match3or4Hex + '$|^' + match6or8Hex + '$', 'i');
-
-var hexRgb = function hexRgb(hex) {
-	var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-
-	if (typeof hex !== 'string' || nonHexChars.test(hex) || !validHexSize.test(hex)) {
-		throw new TypeError('Expected a valid hex string');
-	}
-
-	hex = hex.replace(/^#/, '');
-	var alpha = 255;
-
-	if (hex.length === 8) {
-		alpha = parseInt(hex.slice(6, 8), 16) / 255;
-		hex = hex.substring(0, 6);
-	}
-
-	if (hex.length === 4) {
-		alpha = parseInt(hex.slice(3, 4).repeat(2), 16) / 255;
-		hex = hex.substring(0, 3);
-	}
-
-	if (hex.length === 3) {
-		hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
-	}
-
-	var num = parseInt(hex, 16);
-	var red = num >> 16;
-	var green = num >> 8 & 255;
-	var blue = num & 255;
-
-	return options.format === 'array' ? [red, green, blue, alpha] : { red: red, green: green, blue: blue, alpha: alpha };
-};
 
 var commonjsGlobal = typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
@@ -57,6 +18,48 @@ var commonjsGlobal = typeof window !== 'undefined' ? window : typeof global !== 
 function createCommonjsModule(fn, module) {
 	return module = { exports: {} }, fn(module, module.exports), module.exports;
 }
+
+var hexRgb = createCommonjsModule(function (module) {
+	'use strict';
+
+	var hexCharacters = 'a-f\\d';
+	var match3or4Hex = '#?[' + hexCharacters + ']{3}[' + hexCharacters + ']?';
+	var match6or8Hex = '#?[' + hexCharacters + ']{6}([' + hexCharacters + ']{2})?';
+	var nonHexChars = new RegExp('[^#' + hexCharacters + ']', 'gi');
+	var validHexSize = new RegExp('^' + match3or4Hex + '$|^' + match6or8Hex + '$', 'i');
+
+	module.exports = function (hex) {
+		var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+		if (typeof hex !== 'string' || nonHexChars.test(hex) || !validHexSize.test(hex)) {
+			throw new TypeError('Expected a valid hex string');
+		}
+
+		hex = hex.replace(/^#/, '');
+		var alpha = 1;
+
+		if (hex.length === 8) {
+			alpha = parseInt(hex.slice(6, 8), 16) / 255;
+			hex = hex.slice(0, 6);
+		}
+
+		if (hex.length === 4) {
+			alpha = parseInt(hex.slice(3, 4).repeat(2), 16) / 255;
+			hex = hex.slice(0, 3);
+		}
+
+		if (hex.length === 3) {
+			hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
+		}
+
+		var num = parseInt(hex, 16);
+		var red = num >> 16;
+		var green = num >> 8 & 255;
+		var blue = num & 255;
+
+		return options.format === 'array' ? [red, green, blue, alpha] : { red: red, green: green, blue: blue, alpha: alpha };
+	};
+});
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -2652,7 +2655,7 @@ var AutoGradual = function (_maptalks$Class) {
 
     AutoGradual.prototype.change = function change(target) {
         var geometries = [];
-        if (target instanceof maptalks.VectorLayer) geometries = target.getGeometries();else if (target instanceof Array) geometries = target;
+        if (target instanceof maptalks.VectorLayer || target instanceof maptalks.GeometryCollection) geometries = target.getGeometries();else if (target instanceof Array) geometries = target;
         this._geometries = this._sortGeosByExtent(geometries);
         this._length = this._geometries.length;
         if (this._length > 0) this._doRadualChange();
@@ -2781,6 +2784,6 @@ exports.AutoGradual = AutoGradual;
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-typeof console !== 'undefined' && console.log('maptalks.autogradual v0.1.0');
+typeof console !== 'undefined' && console.log('maptalks.autogradual v0.1.1');
 
 })));
