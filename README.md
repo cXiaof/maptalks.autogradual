@@ -41,7 +41,7 @@ new maptalks.AutoGradual(options)
     -   direction **String** 'x' / 'y' / null
     -   includePolygonBorder **Boolean** false is default
 
-`change(attr)` // attr can be a VectorLayer, GeometryCollection or geometries array
+`change(attr)` attr can be a VectorLayer, GeometryCollection or geometries array
 
 ## Contributing
 
