@@ -3,7 +3,8 @@ const map = new maptalks.Map('map', {
     center: [121.387, 31.129],
     zoom: 14,
     baseLayer: new maptalks.TileLayer('base', {
-        urlTemplate: 'http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
+        urlTemplate:
+            'http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
         subdomains: ['a', 'b', 'c', 'd'],
         attribution:
             '&copy; <a href="http://osm.org">OpenStreetMap</a> contributors, &copy; <a href="https://carto.com/">CARTO</a>',
@@ -11,7 +12,11 @@ const map = new maptalks.Map('map', {
         placeholder: true
     }),
     scaleControl: { position: 'bottom-right', metric: true, imperial: true },
-    zoomControl: { position: { top: 80, right: 20 }, slider: false, zoomLevel: true },
+    zoomControl: {
+        position: { top: 80, right: 20 },
+        slider: false,
+        zoomLevel: true
+    },
     spatialReference: {
         projection: 'EPSG:3857',
         resolutions: (function() {
@@ -45,9 +50,18 @@ drawTool.on('drawend', (param) => {
 })
 
 // new Toolbar
-const modes = ['Point', 'LineString', 'Polygon', 'Rectangle', 'Circle', 'Ellipse']
+const modes = [
+    'Point',
+    'LineString',
+    'Polygon',
+    'Rectangle',
+    'Circle',
+    'Ellipse'
+]
 let children = []
-modes.map((item) => children.push({ item, click: () => drawTool.setMode(item).enable() }))
+modes.map((item) =>
+    children.push({ item, click: () => drawTool.setMode(item).enable() })
+)
 
 const toolbar = new maptalks.control.Toolbar({
     position: 'top-left',

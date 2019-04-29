@@ -14,7 +14,10 @@ export class AutoGradual extends maptalks.Class {
 
     change(target) {
         let geometries = []
-        if (target instanceof maptalks.VectorLayer || target instanceof maptalks.GeometryCollection)
+        if (
+            target instanceof maptalks.VectorLayer ||
+            target instanceof maptalks.GeometryCollection
+        )
             geometries = target.getGeometries()
         else if (target instanceof Array) geometries = target
         this._geometries = this._sortGeosByExtent(geometries)
@@ -49,10 +52,19 @@ export class AutoGradual extends maptalks.Class {
             }
             const tasks = this._getTasksIndexArrBygap(gaps)
             tasks.forEach((task, index) => {
-                const colorArr = this._getItemsColor(target[index], target[index + 1], task.length)
-                task.forEach((key, i) => this._updateGeosSymbol(this._geometries[key], colorArr[i]))
+                const colorArr = this._getItemsColor(
+                    target[index],
+                    target[index + 1],
+                    task.length
+                )
+                task.forEach((key, i) =>
+                    this._updateGeosSymbol(this._geometries[key], colorArr[i])
+                )
             })
-        } else this._geometries.forEach((geo, index) => this._updateGeosSymbol(geo, this.options['colors'][index]))
+        } else
+            this._geometries.forEach((geo, index) =>
+                this._updateGeosSymbol(geo, this.options['colors'][index])
+            )
     }
 
     _getTasksIndexArrBygap(gaps) {
