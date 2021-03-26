@@ -1,7 +1,10 @@
 /*!
  * maptalks.autogradual v0.1.1
  * LICENSE : MIT
- * (c) 2016-2019 maptalks.org
+ * (c) 2016-2021 maptalks.org
+ */
+/*!
+ * requires maptalks@>=0.31.0 
  */
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
@@ -39,12 +42,12 @@ var hexRgb = createCommonjsModule(function (module) {
 		var alpha = 1;
 
 		if (hex.length === 8) {
-			alpha = parseInt(hex.slice(6, 8), 16) / 255;
+			alpha = Number.parseInt(hex.slice(6, 8), 16) / 255;
 			hex = hex.slice(0, 6);
 		}
 
 		if (hex.length === 4) {
-			alpha = parseInt(hex.slice(3, 4).repeat(2), 16) / 255;
+			alpha = Number.parseInt(hex.slice(3, 4).repeat(2), 16) / 255;
 			hex = hex.slice(0, 3);
 		}
 
@@ -52,12 +55,21 @@ var hexRgb = createCommonjsModule(function (module) {
 			hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
 		}
 
-		var num = parseInt(hex, 16);
-		var red = num >> 16;
-		var green = num >> 8 & 255;
-		var blue = num & 255;
+		var number = Number.parseInt(hex, 16);
+		var red = number >> 16;
+		var green = number >> 8 & 255;
+		var blue = number & 255;
 
-		return options.format === 'array' ? [red, green, blue, alpha] : { red: red, green: green, blue: blue, alpha: alpha };
+		if (options.format === 'array') {
+			return [red, green, blue, alpha];
+		}
+
+		if (options.format === 'css') {
+			var alphaString = alpha === 1 ? '' : ' / ' + Number((alpha * 100).toFixed(2)) + '%';
+			return 'rgb(' + red + ' ' + green + ' ' + blue + alphaString + ')';
+		}
+
+		return { red: red, green: green, blue: blue, alpha: alpha };
 	};
 });
 
@@ -2784,6 +2796,6 @@ exports.AutoGradual = AutoGradual;
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-typeof console !== 'undefined' && console.log('maptalks.autogradual v0.1.1');
+typeof console !== 'undefined' && console.log('maptalks.autogradual v0.1.1, requires maptalks@>=0.31.0.');
 
 })));
